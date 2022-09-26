@@ -1,0 +1,84 @@
+@import '../models/variables';
+
+.form {
+    display: grid;
+    border: 4px solid $green-color;
+    padding: 1rem;
+    margin: 1rem;
+    grid-template-areas:
+    "teamOne teamTwo"
+    "teamOneResults teamTwoResults"
+    "teamOneOption teamTwoOption"
+    "gameName time"
+    "date submit";
+}
+
+label {
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3B3B3B;
+}
+
+.teamOne {
+    grid-area: teamOne;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.teamTwo {
+    grid-area: teamTwo;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.teamOneResults {
+    grid-area: teamOneResults;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.teamOneOption {
+    grid-area: teamOneOption;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.teamTwoResults {
+    grid-area: teamTwoResults;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.teamTwoOption {
+    grid-area: teamTwoOption;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.gameName {
+    grid-area: gameName;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.date {
+    grid-area: date;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.time {
+    grid-area: time;
+    margin: 0.2rem;
+    height: 3rem;
+}
+
+.form-button {
+    grid-area: submit;
+    margin: 0.2rem;
+    height: 3rem;
+    background-color: $grey-color;
+    border: 1px solid $grey-color;
+}

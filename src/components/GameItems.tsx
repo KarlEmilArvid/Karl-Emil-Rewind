@@ -1,4 +1,3 @@
-
 import { Game } from '../models/data'
 
 interface Props {

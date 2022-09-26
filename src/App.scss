@@ -10,6 +10,12 @@
 }
 
 body {
+  background-color: $background;
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -20,8 +26,4 @@ body {
 .App {
   margin: 0 auto;
   max-width: 90%;
-}
-
-a {
-  text-decoration: none;
 }

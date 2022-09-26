@@ -1,4 +1,5 @@
 //formulär
+//formulär required/reset funkar ej
 //importerade funktioner
 //gör om gameList helt, spara till json, ta från json, mappa ut från json
 import { useState } from 'react'
@@ -13,30 +14,39 @@ interface Props {
 
 function Main() {
     const [game, setGame] = useState<Game[]>(jsonData.gamesPlayed);
-    const [formInput, setFormInput] = useState<FormState>(
-        {
-            teamOne: '',
-            teamTwo: '',
-            gameName: '',
-            teamOneResults: false,
-            teamTwoResults: false,
-            date: '',
-            time: ''
-        }
-    )
+    const [formInput, setFormInput] = useState<FormState>({
+        teamOne: '',
+        teamTwo: '',
+        gameName: '',
+        teamOneResults: '',
+        teamTwoResults: '',
+        date: '',
+        time: ''
+    })
 
-    const handleChange = (e: any) => {
-        const newInput = (data: any) => ({...data, [e.target.name]:e.target.value})
-        setFormInput(newInput)
+
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        setFormInput({ ...formInput, [event.target.name]: event.target.value });
     }
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
+    const handleSubmit = (event: any) => {
+        event.preventDefault();
         const checkIfEmpty = !Object.values(formInput).every(res => res === '')
-        if(checkIfEmpty) {
+        console.log(checkIfEmpty)
+        if(checkIfEmpty == true) {
             const newData = (data: any) => ([...data, formInput])
             setGame(newData)
-            const emptyInput = {teamOne: '', teamTwo: '', gameName: '', teamOneResults: false, teamTwoResults: false, date: '', time: ''}
+            const emptyInput = {
+                teamOne: '',
+                teamTwo: '',
+                gameName: '',
+                teamOneResults: '',
+                teamTwoResults: '',
+                date: '',
+                time: ''
+            }
             setFormInput(emptyInput)
         }
     }
@@ -52,3 +62,7 @@ function Main() {
 }
 
 export default Main
+
+
+//            const emptyInput = {teamOne: '', teamTwo: '', gameName: '', teamOneResults: '', teamTwoResults: '', date: '', time: ''}
+//              setFormInput(emptyInput)
