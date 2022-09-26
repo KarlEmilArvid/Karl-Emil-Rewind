@@ -1,5 +1,16 @@
+@import '../models/variables';
+
 header {
-    display: flex;
-    align-items: center;
-    padding-left: 1rem;
+    margin: 2rem;
+    padding: 1rem;
+    h1 {
+        padding: 1rem;
+        color: $white-color;
+    }
+
+    hr {
+        height: 4px;
+        background-color: $grey-color;
+        border: none;
+    }
 }

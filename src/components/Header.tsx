@@ -3,8 +3,9 @@ import './header.scss'
 const Header = () => {
 
     return (
-        <header>
+        <header className='header'>
             <h1>Karl-Emil Rewind</h1>
+            <hr />
         </header>
     )
 }

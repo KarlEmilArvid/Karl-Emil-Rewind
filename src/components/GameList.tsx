@@ -1,4 +1,4 @@
-import GameItems from "./gameItems"
+import GameItems from "./GameItems"
 import { Game } from '../models/data'
 
 interface Props {
