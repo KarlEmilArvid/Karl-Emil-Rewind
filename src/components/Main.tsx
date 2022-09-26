@@ -1,7 +1,8 @@
 //formulär
-//formulär required/reset funkar ej
+//formulär required
 //importerade funktioner
 //gör om gameList helt, spara till json, ta från json, mappa ut från json
+
 import { useState } from 'react'
 import {FormState, Game} from '../models/data'
 import FormInput from './FormInput'
@@ -24,8 +25,6 @@ function Main() {
         time: ''
     })
 
-
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         setFormInput({ ...formInput, [event.target.name]: event.target.value });
@@ -34,8 +33,7 @@ function Main() {
     const handleSubmit = (event: any) => {
         event.preventDefault();
         const checkIfEmpty = !Object.values(formInput).every(res => res === '')
-        console.log(checkIfEmpty)
-        if(checkIfEmpty == true) {
+        if(checkIfEmpty) {
             const newData = (data: any) => ([...data, formInput])
             setGame(newData)
             const emptyInput = {
@@ -62,7 +60,3 @@ function Main() {
 }
 
 export default Main
-
-
-//            const emptyInput = {teamOne: '', teamTwo: '', gameName: '', teamOneResults: '', teamTwoResults: '', date: '', time: ''}
-//              setFormInput(emptyInput)

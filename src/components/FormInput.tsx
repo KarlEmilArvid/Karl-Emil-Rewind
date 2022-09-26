@@ -1,4 +1,3 @@
-//true=false switch? alltså går enbart att välja alternativ
 //onClick = spara till json
 //updatera lista från json
 //osv
