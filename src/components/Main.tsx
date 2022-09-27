@@ -3,11 +3,10 @@
 //importerade funktioner
 //gör om gameList helt, spara till json, ta från json, mappa ut från json
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {FormState, Game} from '../models/data'
 import FormInput from './FormInput'
 import GameList from './GameList'
-import Filters from './Filter'
 
 interface Props {
     games: Game[]
@@ -25,7 +24,6 @@ function Main({games}: Props) {
         date: '',
         time: ''
     })
-
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -60,7 +58,6 @@ function Main({games}: Props) {
             })
             setGamesToShow(sortedGames)
         }, [gamesToShow])
-
     //filter för spelnamn, teamOne namn, teamTwo namn
     useEffect(() => {
         setGamesToShow(games.filter(games =>
