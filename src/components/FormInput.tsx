@@ -31,7 +31,7 @@ function FormInput({handleChange, formInput, handleSubmit}: Props) {
             <input type="text" onChange={handleChange} value={formInput.gameName} name="gameName" className="gameName" placeholder="Game name:" />
             <input type="text" onChange={handleChange} value={formInput.time} name="time" className="time" placeholder="Time played:" />
             <input type="date" onChange={handleChange} value={formInput.date} name="date" className="date" placeholder="Date played:" />
-            <input type="submit" onClick={handleSubmit} className="form-button" />
+            <input type="submit" onClick={handleSubmit} value="Add game" className="form-button" />
         </form>
     )
 }

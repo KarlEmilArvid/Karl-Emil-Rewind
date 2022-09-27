@@ -3,18 +3,19 @@
 //importerade funktioner
 //gör om gameList helt, spara till json, ta från json, mappa ut från json
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {FormState, Game} from '../models/data'
 import FormInput from './FormInput'
 import GameList from './GameList'
-import jsonData from '../data/gamesPlayed.json'
+import Filters from './Filter'
 
 interface Props {
     games: Game[];
 }
 
-function Main() {
-    const [game, setGame] = useState<Game[]>(jsonData.gamesPlayed);
+function Main({games}: Props) {
+    const [query, setQuery] = useState<string>("")
+    const [gamesToShow, setGamesToShow] = useState<Game[]>(games.filter(games => games.gameName.toLowerCase().includes(query) || games.teamOne.toLowerCase().includes(query) || games.teamTwo.toLowerCase().includes(query)));;
     const [formInput, setFormInput] = useState<FormState>({
         teamOne: '',
         teamTwo: '',
@@ -24,6 +25,7 @@ function Main() {
         date: '',
         time: ''
     })
+
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -35,7 +37,7 @@ function Main() {
         const checkIfEmpty = !Object.values(formInput).every(res => res === '')
         if(checkIfEmpty) {
             const newData = (data: any) => ([...data, formInput])
-            setGame(newData)
+            setGamesToShow(newData)
             const emptyInput = {
                 teamOne: '',
                 teamTwo: '',
@@ -48,11 +50,32 @@ function Main() {
             setFormInput(emptyInput)
         }
     }
+    //sorterar spelen före sidan laddas, beroende på datum spelat
+    useEffect(() => {
+        const sortedGames = [...gamesToShow]
+        sortedGames.sort(( a, b ) => {
+                if (a.date < b.date) {return 1;}
+                if (a.date > b.date) {return -1;}
+                return 0;
+            })
+            setGamesToShow(sortedGames)
+        }, [gamesToShow])
+
+    //filter för spelnamn, teamOne namn, teamTwo namn
+    useEffect(() => {
+        setGamesToShow(games.filter(games =>
+            games.gameName.toLowerCase().includes(query) ||
+            games.teamOne.toLowerCase().includes(query) ||
+            games.teamTwo.toLowerCase().includes(query)));
+        }, [query])
 
     return (
         <div className='form-wrapper'>
             <FormInput handleChange={handleChange} formInput={formInput} handleSubmit={handleSubmit}/>
-            {game?.map((game) => (
+            <section className="search-wrapper">
+                <input type="text" placeholder="Search game or team names" className="search" onChange={e => setQuery(e.target.value)} />
+            </section>
+            {gamesToShow?.map((game) => (
                 <GameList game={game} key={game.id}/>
             ))}
         </div>

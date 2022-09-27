@@ -7,7 +7,7 @@ interface Props {
 }
 
 const GameList = ({ game }: Props) => {
-    console.log(game)
+
     return (
         <table className="table">
             <thead>
