@@ -13,25 +13,25 @@ interface Props {
 function FormInput({handleChange, formInput, handleSubmit}: Props) {
 
     return (
-        <form className="form" action="">
-            <input type="text" onChange={handleChange} value={formInput.teamOne} name="teamOne" className="teamOne"  placeholder="Team One name:" />
-            <input type="text" onChange={handleChange} value={formInput.teamTwo} name="teamTwo" className="teamTwo"  placeholder="Team Two name:" />
+        <form onSubmit={handleSubmit} className="form" action="">
+            <input type="text" onChange={handleChange} value={formInput.teamOne} name="teamOne" className="teamOne"  placeholder="Team One name:" required/>
+            <input type="text" onChange={handleChange} value={formInput.teamTwo} name="teamTwo" className="teamTwo"  placeholder="Team Two name:" required/>
             <label htmlFor="teamOneResults" className="teamOneResults">Did Team One win?</label>
-            <select onChange={handleChange} value={formInput.teamOneResults} name="teamOneResults" className="teamOneOption" id="teamOneResults">
+            <select onChange={handleChange} value={formInput.teamOneResults} name="teamOneResults" className="teamOneOption" id="teamOneResults" required>
                 <option value=""></option>
                 <option value="W">W</option>
                 <option value="L">L</option>
             </select>
             <label htmlFor="teamTwoResults" className="teamTwoResults">Did Team Two win?</label>
-            <select onChange={handleChange} value={formInput.teamTwoResults} name="teamTwoResults" className="teamTwoOption" id="teamTwoResults">
+            <select onChange={handleChange} value={formInput.teamTwoResults} name="teamTwoResults" className="teamTwoOption" id="teamTwoResults" required>
                 <option value=""></option>
                 <option value="W">W</option>
                 <option value="L">L</option>
             </select>
-            <input type="text" onChange={handleChange} value={formInput.gameName} name="gameName" className="gameName" placeholder="Game name:" />
-            <input type="text" onChange={handleChange} value={formInput.time} name="time" className="time" placeholder="Time played:" />
-            <input type="date" onChange={handleChange} value={formInput.date} name="date" className="date" placeholder="Date played:" />
-            <input type="submit" onClick={handleSubmit} value="Add game" className="form-button" />
+            <input type="text" onChange={handleChange} value={formInput.gameName} name="gameName" className="gameName" placeholder="Game name:" required/>
+            <input type="text" onChange={handleChange} value={formInput.time} name="time" className="time" placeholder="Time played:" required/>
+            <input type="date" onChange={handleChange} value={formInput.date} name="date" className="date" placeholder="Date played:" required/>
+            <input type="submit" value="Add game" className="form-button" />
         </form>
     )
 }

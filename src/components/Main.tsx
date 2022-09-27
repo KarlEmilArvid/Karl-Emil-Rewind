@@ -1,12 +1,12 @@
 //formulär
 //formulär required
-//importerade funktioner
 //gör om gameList helt, spara till json, ta från json, mappa ut från json
 
 import { useEffect, useState } from 'react'
 import {FormState, Game} from '../models/data'
 import FormInput from './FormInput'
 import GameList from './GameList'
+import './main.scss'
 
 interface Props {
     games: Game[]
@@ -75,15 +75,15 @@ function Main({games}: Props) {
     }
 
     return (
-        <div className='form-wrapper'>
+        <div className='main-wrapper'>
             <FormInput handleChange={handleChange} formInput={formInput} handleSubmit={handleSubmit}/>
-            <section className="search-wrapper">
+            <section className="search-container">
                 <input value={query} type="text" placeholder="Search game or team names" className="search" onChange={e => setQuery(e.target.value)} />
             </section>
             <section className='button-wrapper'>
                 <button onClick={() => setQuery('')}>Show all games</button>
                 <button onClick={showLatest}>Show 10 latest</button>
-                <button onClick={noWinner}>Show games with no winner</button>
+                <button onClick={noWinner}>Games with no winner</button>
             </section>
             {gamesToShow?.map((game) => (
                 <GameList game={game} key={game.id}/>

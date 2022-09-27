@@ -11,6 +11,21 @@ $green-color: #7eb780;
   --fs-small: 14px;
 }
 
+@mixin button {
+  background-color: $grey-color;
+  color: $white-color;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: 2px solid transparent;
+  margin: 0.3rem;
+  padding: 0.6em 1.2em;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
 @media screen and (max-width: 900px) {
   :root {
     --fs-header: 40px;
