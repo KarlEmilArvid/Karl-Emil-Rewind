@@ -19,14 +19,14 @@ function FormInput({handleChange, formInput, handleSubmit}: Props) {
             <label htmlFor="teamOneResults" className="teamOneResults">Did Team One win?</label>
             <select onChange={handleChange} value={formInput.teamOneResults} name="teamOneResults" className="teamOneOption" id="teamOneResults">
                 <option value=""></option>
-                <option value="Win">W</option>
-                <option value="Loss">L</option>
+                <option value="W">W</option>
+                <option value="L">L</option>
             </select>
             <label htmlFor="teamTwoResults" className="teamTwoResults">Did Team Two win?</label>
             <select onChange={handleChange} value={formInput.teamTwoResults} name="teamTwoResults" className="teamTwoOption" id="teamTwoResults">
                 <option value=""></option>
-                <option value="Win">W</option>
-                <option value="Loss">L</option>
+                <option value="W">W</option>
+                <option value="L">L</option>
             </select>
             <input type="text" onChange={handleChange} value={formInput.gameName} name="gameName" className="gameName" placeholder="Game name:" />
             <input type="text" onChange={handleChange} value={formInput.time} name="time" className="time" placeholder="Time played:" />
