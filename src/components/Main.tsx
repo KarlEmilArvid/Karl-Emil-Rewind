@@ -3,18 +3,18 @@
 //importerade funktioner
 //gör om gameList helt, spara till json, ta från json, mappa ut från json
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {FormState, Game} from '../models/data'
 import FormInput from './FormInput'
 import GameList from './GameList'
 import Filters from './Filter'
 
 interface Props {
-    games: Game[];
+    games: Game[]
 }
 
 function Main({games}: Props) {
-    const [query, setQuery] = useState<string>("")
+    const [query, setQuery] = useState<string>('')
     const [gamesToShow, setGamesToShow] = useState<Game[]>(games.filter(games => games.gameName.toLowerCase().includes(query) || games.teamOne.toLowerCase().includes(query) || games.teamTwo.toLowerCase().includes(query)));;
     const [formInput, setFormInput] = useState<FormState>({
         teamOne: '',
@@ -69,11 +69,24 @@ function Main({games}: Props) {
             games.teamTwo.toLowerCase().includes(query)));
         }, [query])
 
+    const showLatest = () => {
+
+    }
+
+    const noWinner = () => {
+
+    }
+
     return (
         <div className='form-wrapper'>
             <FormInput handleChange={handleChange} formInput={formInput} handleSubmit={handleSubmit}/>
             <section className="search-wrapper">
-                <input type="text" placeholder="Search game or team names" className="search" onChange={e => setQuery(e.target.value)} />
+                <input value={query} type="text" placeholder="Search game or team names" className="search" onChange={e => setQuery(e.target.value)} />
+            </section>
+            <section className='button-wrapper'>
+                <button onClick={() => setQuery('')}>Show all games</button>
+                <button onClick={showLatest}>Show 10 latest</button>
+                <button onClick={noWinner}>Show games with no winner</button>
             </section>
             {gamesToShow?.map((game) => (
                 <GameList game={game} key={game.id}/>

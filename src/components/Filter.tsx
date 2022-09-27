@@ -6,7 +6,21 @@ import GameList from "./GameList";
 import './filter.scss'
 
 const Filters = () => {
-    const [gameList, setGameList] = useState<any[]>([])
+
+    return (
+        <section>
+            <button>Show 10 latest</button>
+            <button>Show all games</button>
+            <button>Show games with no winner</button>
+        </section>
+    )
+}
+
+export default Filters
+
+
+/**
+ *     const [gameList, setGameList] = useState<any[]>([])
     const [selectedGame, setSelectedGame] = useState<any[]>()
 
     let defaultGames = jsonData
@@ -23,27 +37,18 @@ const Filters = () => {
       }
 
     let filteredList = useMemo(getFilteredList, [selectedGame, gameList])
-
-    return (
-        <section>
-            <button>Show 10 latest</button>
-            <button>Show all games</button>
-            <select onChange={handleGameChange} name="gameName" id="gameName">
+ * 
+ *             <select onChange={handleGameChange} name="gameName" id="gameName">
                 <option value=""></option>
                 <option value="Fotboll">Fotboll</option>
                 <option value="Hockey">Hockey</option>
                 <option value="Shack">Shack</option>
             </select>
-            <button>Show all games of fotball</button>
-            <button>Show games by *player-name*</button>
-            <button>Pick game to display?</button>
-            <div>
+
+ *             <div>
             {filteredList.map((element, index) => (
                 <GameList {...element} key={index} />
             ))}
             </div>
-        </section>
-    )
-}
-
-export default Filters
+ * 
+ */
