@@ -67,11 +67,17 @@ function Main({games}: Props) {
         }, [query])
 
     const showLatest = () => {
-
+        let tenLatest = gamesToShow.slice(0, 10)
+        setGamesToShow(tenLatest)
     }
 
+    //funkar men ennbart om man redan sökt på namn
     const noWinner = () => {
-
+        let noWinners = gamesToShow.filter((games) => {
+            if(games.teamOneResults === 'L' && games.teamTwoResults === 'L') {
+                return games;
+            }})
+        setGamesToShow(noWinners)
     }
 
     return (

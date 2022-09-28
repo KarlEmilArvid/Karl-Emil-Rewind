@@ -99,6 +99,16 @@
             "date": "2022-03-24",
             "time": "10",
             "id": 10
+        },
+        {
+            "teamOne": "Karl",
+            "teamTwo": "Arvid",
+            "gameName": "Fotboll",
+            "teamOneResults": "L",
+            "teamTwoResults": "L",
+            "date": "2022-03-26",
+            "time": "14",
+            "id": 11
         }
     ]
 }
