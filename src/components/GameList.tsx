@@ -4,9 +4,14 @@ import './gameList.scss'
 
 interface Props {
     game: Game;
+    removeItem: (id: number) => void
 }
 
-const GameList = ({ game }: Props) => {
+const GameList = ({ game, removeItem }: Props) => {
+
+    const handleClick: () => void = () => {
+        removeItem(game.id)
+    }
 
     return (
         <table className="table">
@@ -23,6 +28,7 @@ const GameList = ({ game }: Props) => {
             </thead>
             <tbody>
                 <GameItems game={game} key={game.id}/>
+                <button onClick={handleClick}>X</button>
             </tbody>
         </table>
     )

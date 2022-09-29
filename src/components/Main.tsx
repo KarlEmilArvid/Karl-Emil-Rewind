@@ -76,9 +76,18 @@ function Main({games}: Props) {
         setGamesToShow(noWinners)
     }
     //resets men funkar enbart om man skrivit något i sökfält
-    //todo: fix
+    //todo: fix, fixad?
     const showAll = () => {
+        setGamesToShow(games.filter(games => games.gameName.toLowerCase().includes(query) || games.teamOne.toLowerCase().includes(query) || games.teamTwo.toLowerCase().includes(query)));;
         setQuery('')
+    }
+
+    const removeItem: (id:number) => void = (id) => {
+        const localData: Game[] = JSON.parse(localStorage.getItem('games') || '' )
+        const gameIndex: number = localData.findIndex(game => game.id == id)
+        localData.splice(gameIndex, 1)
+        console.log(gameIndex)
+        localStorage.setItem('games', JSON.stringify(localData))
     }
 
     return (
@@ -94,7 +103,7 @@ function Main({games}: Props) {
             </section>
             {/**if query = gameName => {person} har mest vinster i {spelnamn} */}
             {sortedGames?.map((game) => (
-                <GameList game={game} key={game.id}/>
+                <GameList game={game} removeItem={removeItem} key={game.id}/>
             ))}
         </div>
     )

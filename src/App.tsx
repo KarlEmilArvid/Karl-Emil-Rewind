@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Main games={games}/>
+      <Main games={games} />
     </div>
   )
 }
