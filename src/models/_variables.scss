@@ -3,14 +3,6 @@ $grey-color: #50585b;
 $white-color: #f0f0f0;
 $green-color: #7eb780;
 
-:root {
-  --fs-header: 54px;
-  --fs-logo: 34px;
-  --fs-a: 24px;
-  --fs-text: 20px;
-  --fs-small: 14px;
-}
-
 @mixin button {
   background-color: $grey-color;
   color: $white-color;
@@ -24,13 +16,4 @@ $green-color: #7eb780;
   font-family: inherit;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-
-@media screen and (max-width: 900px) {
-  :root {
-    --fs-header: 40px;
-    --fs-logo: 24px;
-    --fs-a: 16px;
-    --fs-text: 15px;
-  }
 }
