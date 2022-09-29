@@ -38,7 +38,7 @@ function Main({games}: Props) {
         if(checkIfEmpty) {
             const newData = (data: any) => ([...data, formInput])
             setGamesToShow(newData)
-            localStorage.setItem('games', JSON.stringify([...games, formInput])) //sparar till localStorage men återställs då den nya inte läses in
+            localStorage.setItem('games', JSON.stringify([...games, formInput]))
             const emptyInput = {
                 teamOne: '',
                 teamTwo: '',
@@ -52,6 +52,7 @@ function Main({games}: Props) {
         }
     }
     //todo: if gameName => teamOneResults ||teamTwoResults => {highest amount} has the most wins in {gameName}
+    // let players = teamOneName + teamTwoName (skapa ny array av spelar namn ) checka games == W, display most wins
     //todo: remove/edit button
 
     //filter för spelnamn, teamOne namn, teamTwo namn
