@@ -63,7 +63,7 @@
         {
             "teamOne": "Emil",
             "teamTwo": "Arvid",
-            "gameName": "Shack",
+            "gameName": "Schack",
             "teamOneResults": "W",
             "teamTwoResults": "L",
             "date": "2022-03-10",
@@ -73,7 +73,7 @@
         {
             "teamOne": "Karl",
             "teamTwo": "Emil",
-            "gameName": "Shack",
+            "gameName": "Schack",
             "teamOneResults": "L",
             "teamTwoResults": "L",
             "date": "2022-03-13",
@@ -83,7 +83,7 @@
         {
             "teamOne": "Emil",
             "teamTwo": "Karl",
-            "gameName": "Shack",
+            "gameName": "Schack",
             "teamOneResults": "W",
             "teamTwoResults": "L",
             "date": "2022-03-20",
@@ -101,14 +101,74 @@
             "id": 10
         },
         {
-            "teamOne": "Karl",
+            "teamOne": "Erik",
             "teamTwo": "Arvid",
+            "gameName": "Hockey",
+            "teamOneResults": "L",
+            "teamTwoResults": "L",
+            "date": "2022-03-27",
+            "time": "33",
+            "id": 11
+        },
+        {
+            "teamOne": "Karl",
+            "teamTwo": "Emil",
+            "gameName": "Fotboll",
+            "teamOneResults": "W",
+            "teamTwoResults": "L",
+            "date": "2022-01-20",
+            "time": "60",
+            "id": 12
+        },
+        {
+            "teamOne": "Filip",
+            "teamTwo": "Erik",
+            "gameName": "Fotboll",
+            "teamOneResults": "W",
+            "teamTwoResults": "L",
+            "date": "2021-03-26",
+            "time": "21",
+            "id": 13
+        },
+        {
+            "teamOne": "Emil",
+            "teamTwo": "Filip",
+            "gameName": "Schack",
+            "teamOneResults": "W",
+            "teamTwoResults": "L",
+            "date": "2022-02-26",
+            "time": "44",
+            "id": 14
+        },
+        {
+            "teamOne": "Karl",
+            "teamTwo": "Kent",
             "gameName": "Fotboll",
             "teamOneResults": "L",
             "teamTwoResults": "L",
-            "date": "2022-03-26",
-            "time": "14",
-            "id": 11
+            "date": "2022-04-10",
+            "time": "54",
+            "id": 15
+        },
+        {
+            "teamOne": "Kent",
+            "teamTwo": "Arvid",
+            "gameName": "Fotboll",
+            "teamOneResults": "W",
+            "teamTwoResults": "L",
+            "date": "2021-09-24",
+            "time": "82",
+            "id": 16
+        },
+        {
+            "teamOne": "Karl",
+            "teamTwo": "Kent",
+            "gameName": "Fotboll",
+            "teamOneResults": "L",
+            "teamTwoResults": "L",
+            "date": "2021-05-20",
+            "time": "44",
+            "id": 17
         }
     ]
 }
