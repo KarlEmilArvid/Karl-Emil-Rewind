@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {Game} from './models/data'
+import { Game } from './models/data'
 import jsonData from './data/gamesPlayed.json'
 import Header from './components/Header'
 import Main from './components/Main'
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <Main games={games} />
     </div>
   )

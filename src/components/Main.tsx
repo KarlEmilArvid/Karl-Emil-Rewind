@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {FormState, Game} from '../models/data'
+import { FormState, Game } from '../models/data'
 import FormInput from './FormInput'
 import GameList from './GameList'
 import './main.scss'
@@ -8,7 +8,7 @@ interface Props {
     games: Game[]
 }
 
-function Main({games}: Props) {
+function Main({ games }: Props) {
     const [query, setQuery] = useState<string>('')
     const [gamesToShow, setGamesToShow] = useState<Game[]>(games.filter(games => games.gameName.toLowerCase().includes(query) || games.teamOne.toLowerCase().includes(query) || games.teamTwo.toLowerCase().includes(query)));;
     const [formInput, setFormInput] = useState<FormState>({
@@ -21,9 +21,9 @@ function Main({games}: Props) {
         time: ''
     })
     //sorterar alla spel, det är den här arrayen som mappas ut i komponenten
-    const sortedGames = [...gamesToShow].sort(( a, b ) => {
-        if (a.date < b.date) {return 1}
-        if (a.date > b.date) {return -1}
+    const sortedGames = [...gamesToShow].sort((a, b) => {
+        if (a.date < b.date) { return 1 }
+        if (a.date > b.date) { return -1 }
         return 0
     })
 
@@ -35,7 +35,7 @@ function Main({games}: Props) {
     const handleSubmit = (event: any): void => {
         event.preventDefault();
         const checkIfEmpty = !Object.values(formInput).every(res => res === '')
-        if(checkIfEmpty) {
+        if (checkIfEmpty) {
             const newData = (data: any) => ([...data, formInput])
             setGamesToShow(newData)
             localStorage.setItem('games', JSON.stringify([...games, formInput]))
@@ -66,9 +66,10 @@ function Main({games}: Props) {
     //filter för att visa spel utan vinnare, beroende på vad som är sökt
     const noWinner = (): void => {
         let noWinners = sortedGames.filter((games) => {
-            if(games.teamOneResults === 'L' && games.teamTwoResults === 'L') {
+            if (games.teamOneResults === 'L' && games.teamTwoResults === 'L') {
                 return games;
-            }})
+            }
+        })
         setGamesToShow(noWinners)
     }
     //återställer arrayen och sökfält, för att visa alla spel
@@ -77,8 +78,8 @@ function Main({games}: Props) {
         setQuery('')
     }
     //remove funkar men uppdaterar inte hemsidan, går att ta bort men visas inte om man inte laddar om sidan
-    const removeItem: (id:number) => void = (id) => {
-        const localData: Game[] = JSON.parse(localStorage.getItem('games') || '' )
+    const removeItem: (id: number) => void = (id) => {
+        const localData: Game[] = JSON.parse(localStorage.getItem('games') || '')
         const gameIndex: number = localData.findIndex(game => game.id == id)
         localData.splice(gameIndex, 1)
         console.log(gameIndex)
@@ -88,7 +89,7 @@ function Main({games}: Props) {
 
     return (
         <div className='main-wrapper'>
-            <FormInput handleChange={handleChange} formInput={formInput} handleSubmit={handleSubmit}/>
+            <FormInput handleChange={handleChange} formInput={formInput} handleSubmit={handleSubmit} />
             <section className="search-container">
                 <input value={query} type="text" placeholder="Search game or team names" className="search" onChange={e => setQuery(e.target.value)} />
             </section>
@@ -98,7 +99,7 @@ function Main({games}: Props) {
                 <button onClick={noWinner}>Games with no winner</button>
             </section>
             {sortedGames?.map((game) => (
-                <GameList game={game} removeItem={removeItem} key={game.id}/>
+                <GameList game={game} removeItem={removeItem} key={game.id} />
             ))}
         </div>
     )

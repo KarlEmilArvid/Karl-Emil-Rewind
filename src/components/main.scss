@@ -3,6 +3,7 @@
 .search-container {
     margin: 1.5rem auto;
     padding: 0.5rem;
+
     input {
         width: 70%;
         height: 3rem;
@@ -12,10 +13,12 @@
 
 .button-wrapper {
     margin: 1rem;
+
     button {
         @include button;
         width: 70%;
     }
+
     :hover {
         border-color: $green-color;
     }

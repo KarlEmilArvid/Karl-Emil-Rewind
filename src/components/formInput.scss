@@ -11,11 +11,11 @@
     padding: 1rem;
     margin: 1rem;
     grid-template-areas:
-    "teamOne teamTwo"
-    "teamOneResults teamTwoResults"
-    "teamOneOption teamTwoOption"
-    "gameName time"
-    "date submit";
+        "teamOne teamTwo"
+        "teamOneResults teamTwoResults"
+        "teamOneOption teamTwoOption"
+        "gameName time"
+        "date submit";
 }
 
 label {
@@ -81,7 +81,7 @@ label {
 }
 
 @media screen and (max-width: 520px) {
-    .form > * {
+    .form>* {
         width: 10rem;
     }
 }

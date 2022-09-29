@@ -24,7 +24,7 @@ const GameList = ({ game, removeItem }: Props) => {
                 </tr>
             </thead>
             <tbody>
-                <GameItems game={game} key={game.id} removeItem={removeItem}/>
+                <GameItems game={game} key={game.id} removeItem={removeItem} />
             </tbody>
         </table>
     )
