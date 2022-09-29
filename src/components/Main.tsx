@@ -25,12 +25,18 @@ function Main({games}: Props) {
         time: ''
     })
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const sortedGames = [...gamesToShow].sort(( a, b ) => {
+        if (a.date < b.date) {return 1}
+        if (a.date > b.date) {return -1}
+        return 0
+    })
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         event.preventDefault();
         setFormInput({ ...formInput, [event.target.name]: event.target.value });
     }
 
-    const handleSubmit = (event: any) => {
+    const handleSubmit = (event: any): void => {
         event.preventDefault();
         const checkIfEmpty = !Object.values(formInput).every(res => res === '')
         if(checkIfEmpty) {
@@ -48,16 +54,6 @@ function Main({games}: Props) {
             setFormInput(emptyInput)
         }
     }
-    //sorterar spelen före sidan laddas, beroende på datum spelat
-    useEffect(() => {
-        const sortedGames = [...gamesToShow]
-        sortedGames.sort(( a, b ) => {
-                if (a.date < b.date) {return 1;}
-                if (a.date > b.date) {return -1;}
-                return 0;
-            })
-            setGamesToShow(sortedGames)
-        }, [gamesToShow])
     //filter för spelnamn, teamOne namn, teamTwo namn
     useEffect(() => {
         setGamesToShow(games.filter(games =>
@@ -66,18 +62,21 @@ function Main({games}: Props) {
             games.teamTwo.toLowerCase().includes(query)));
         }, [query])
 
-    const showLatest = () => {
-        let tenLatest = gamesToShow.slice(0, 10)
+    const showLatest = (): void => {
+        let tenLatest = sortedGames.slice(0, 10)
         setGamesToShow(tenLatest)
     }
-
     //funkar men ennbart om man redan sökt på namn
-    const noWinner = () => {
-        let noWinners = gamesToShow.filter((games) => {
+    const noWinner = (): void => {
+        let noWinners = sortedGames.filter((games) => {
             if(games.teamOneResults === 'L' && games.teamTwoResults === 'L') {
                 return games;
             }})
         setGamesToShow(noWinners)
+    }
+    //resets men funkar enbart om man skrivit något i sökfält
+    const showAll = () => {
+        setQuery('')
     }
 
     return (
@@ -87,11 +86,11 @@ function Main({games}: Props) {
                 <input value={query} type="text" placeholder="Search game or team names" className="search" onChange={e => setQuery(e.target.value)} />
             </section>
             <section className='button-wrapper'>
-                <button onClick={() => setQuery('')}>Show all games</button>
+                <button onClick={showAll}>Show all games</button>
                 <button onClick={showLatest}>Show 10 latest</button>
                 <button onClick={noWinner}>Games with no winner</button>
             </section>
-            {gamesToShow?.map((game) => (
+            {sortedGames?.map((game) => (
                 <GameList game={game} key={game.id}/>
             ))}
         </div>
