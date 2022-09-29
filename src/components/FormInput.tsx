@@ -1,7 +1,3 @@
-//onClick = spara till json
-//updatera lista från json
-//osv
-
 import './formInput.scss'
 
 interface Props {

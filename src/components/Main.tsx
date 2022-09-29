@@ -1,7 +1,3 @@
-//formulär
-//formulär required
-//gör om gameList helt, spara till json, ta från json, mappa ut från json
-
 import { useEffect, useState } from 'react'
 import {FormState, Game} from '../models/data'
 import FormInput from './FormInput'
@@ -55,19 +51,22 @@ function Main({games}: Props) {
             setFormInput(emptyInput)
         }
     }
+    //todo: if gameName => teamOneResults ||teamTwoResults => {highest amount} has the most wins in {gameName}
+    //todo: remove/edit button
+
     //filter för spelnamn, teamOne namn, teamTwo namn
     useEffect(() => {
         setGamesToShow(games.filter(games =>
             games.gameName.toLowerCase().includes(query) ||
             games.teamOne.toLowerCase().includes(query) ||
             games.teamTwo.toLowerCase().includes(query)));
-        }, [query])
+    }, [query])
 
     const showLatest = (): void => {
         let tenLatest = sortedGames.slice(0, 10)
         setGamesToShow(tenLatest)
     }
-    //funkar men ennbart om man redan sökt på namn
+
     const noWinner = (): void => {
         let noWinners = sortedGames.filter((games) => {
             if(games.teamOneResults === 'L' && games.teamTwoResults === 'L') {
@@ -76,6 +75,7 @@ function Main({games}: Props) {
         setGamesToShow(noWinners)
     }
     //resets men funkar enbart om man skrivit något i sökfält
+    //todo: fix
     const showAll = () => {
         setQuery('')
     }
@@ -91,6 +91,7 @@ function Main({games}: Props) {
                 <button onClick={showLatest}>Show 10 latest</button>
                 <button onClick={noWinner}>Games with no winner</button>
             </section>
+            {/**if query = gameName => {person} har mest vinster i {spelnamn} */}
             {sortedGames?.map((game) => (
                 <GameList game={game} key={game.id}/>
             ))}

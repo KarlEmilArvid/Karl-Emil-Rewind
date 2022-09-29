@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import {Game} from './models/data'
 import jsonData from './data/gamesPlayed.json'
 import Header from './components/Header'
