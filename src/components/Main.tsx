@@ -31,7 +31,7 @@ function Main({games}: Props) {
         event.preventDefault();
         setFormInput({ ...formInput, [event.target.name]: event.target.value });
     }
-
+    //hanterar att nya spel läggs till och sparas
     const handleSubmit = (event: any): void => {
         event.preventDefault();
         const checkIfEmpty = !Object.values(formInput).every(res => res === '')
@@ -51,10 +51,6 @@ function Main({games}: Props) {
             setFormInput(emptyInput)
         }
     }
-    //todo: if gameName => teamOneResults ||teamTwoResults => {highest amount} has the most wins in {gameName}
-    // let players = teamOneName + teamTwoName (skapa ny array av spelar namn ) checka games == W, display most wins
-    //todo: remove/edit button
-
     //filter för spelnamn, teamOne namn, teamTwo namn
     useEffect(() => {
         setGamesToShow(games.filter(games =>
@@ -62,12 +58,12 @@ function Main({games}: Props) {
             games.teamOne.toLowerCase().includes(query) ||
             games.teamTwo.toLowerCase().includes(query)));
     }, [query])
-
+    //filter för att visa 10 senaste, beroende på vad som är sökt
     const showLatest = (): void => {
         let tenLatest = sortedGames.slice(0, 10)
         setGamesToShow(tenLatest)
     }
-
+    //filter för att visa spel utan vinnare, beroende på vad som är sökt
     const noWinner = (): void => {
         let noWinners = sortedGames.filter((games) => {
             if(games.teamOneResults === 'L' && games.teamTwoResults === 'L') {
@@ -75,18 +71,18 @@ function Main({games}: Props) {
             }})
         setGamesToShow(noWinners)
     }
-    //resets men funkar enbart om man skrivit något i sökfält
-    //todo: fix, fixad?
+    //återställer arrayen och sökfält, för att visa alla spel
     const showAll = () => {
-        setGamesToShow(games.filter(games => games.gameName.toLowerCase().includes(query) || games.teamOne.toLowerCase().includes(query) || games.teamTwo.toLowerCase().includes(query)));;
+        setGamesToShow(games)
         setQuery('')
     }
-
+    //remove funkar men uppdaterar inte hemsidan, går att ta bort men visas inte om man inte laddar om sidan
     const removeItem: (id:number) => void = (id) => {
         const localData: Game[] = JSON.parse(localStorage.getItem('games') || '' )
         const gameIndex: number = localData.findIndex(game => game.id == id)
         localData.splice(gameIndex, 1)
         console.log(gameIndex)
+        setGamesToShow(localData)
         localStorage.setItem('games', JSON.stringify(localData))
     }
 
@@ -101,7 +97,6 @@ function Main({games}: Props) {
                 <button onClick={showLatest}>Show 10 latest</button>
                 <button onClick={noWinner}>Games with no winner</button>
             </section>
-            {/**if query = gameName => {person} har mest vinster i {spelnamn} */}
             {sortedGames?.map((game) => (
                 <GameList game={game} removeItem={removeItem} key={game.id}/>
             ))}

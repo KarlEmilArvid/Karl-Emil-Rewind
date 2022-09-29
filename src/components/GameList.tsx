@@ -9,10 +9,6 @@ interface Props {
 
 const GameList = ({ game, removeItem }: Props) => {
 
-    const handleClick: () => void = () => {
-        removeItem(game.id)
-    }
-
     return (
         <table className="table">
             <thead>
@@ -24,11 +20,11 @@ const GameList = ({ game, removeItem }: Props) => {
                     <th>Team Two Results:</th>
                     <th>Date:</th>
                     <th>Time:</th>
+                    <th>Delete:</th>
                 </tr>
             </thead>
             <tbody>
-                <GameItems game={game} key={game.id}/>
-                <button onClick={handleClick}>X</button>
+                <GameItems game={game} key={game.id} removeItem={removeItem}/>
             </tbody>
         </table>
     )

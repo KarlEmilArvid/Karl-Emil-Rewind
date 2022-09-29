@@ -1,0 +1,11 @@
+@import '../models/variables';
+
+.remove-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    margin: 1rem auto;
+    border: 2px solid $green-color;
+}

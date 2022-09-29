@@ -10,7 +10,7 @@ function App() {
 
   function localData(): any {
     const dataExists = localStorage.getItem('games')
-    return dataExists ? JSON.parse(dataExists) : (jsonData.gamesPlayed)
+    return dataExists ? JSON.parse(dataExists) : localStorage.setItem('games', JSON.stringify([...jsonData.gamesPlayed]))
   }
 
   return (

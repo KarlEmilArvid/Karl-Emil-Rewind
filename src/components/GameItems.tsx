@@ -1,10 +1,17 @@
 import { Game } from '../models/data'
+import './gameItems.scss'
 
 interface Props {
     game: Game;
+    removeItem: (id: number) => void
 }
 
-const GameItems = ({ game }: Props) => {
+const GameItems = ({ game, removeItem }: Props) => {
+
+    //det som klickas tas bort
+    const handleClick: () => void = () => {
+        removeItem(game.id)
+    }
 
   return (
     <tr key={game.id}>
@@ -15,6 +22,7 @@ const GameItems = ({ game }: Props) => {
         <td>{game.teamTwoResults}</td>
         <td>{game.date}</td>
         <td>{game.time}</td>
+        <button className="remove-button" onClick={handleClick}>X</button>
     </tr>
     )
 }
