@@ -24,7 +24,7 @@ function Main({games}: Props) {
         date: '',
         time: ''
     })
-
+    //sorterar alla spel, det är den här arrayen som mappas ut i komponenten
     const sortedGames = [...gamesToShow].sort(( a, b ) => {
         if (a.date < b.date) {return 1}
         if (a.date > b.date) {return -1}
@@ -42,6 +42,7 @@ function Main({games}: Props) {
         if(checkIfEmpty) {
             const newData = (data: any) => ([...data, formInput])
             setGamesToShow(newData)
+            localStorage.setItem('games', JSON.stringify([...games, formInput])) //sparar till localStorage men återställs då den nya inte läses in
             const emptyInput = {
                 teamOne: '',
                 teamTwo: '',

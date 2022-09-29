@@ -6,11 +6,12 @@ import Main from './components/Main'
 import './App.scss'
 
 function App() {
-  const [games, setGames] = useState<Game[]>(jsonData.gamesPlayed || JSON.parse(localStorage.getItem('games') || ''))
+  const [games, setGames] = useState<Game[]>(localData)
 
-  useEffect(() => {
-    localStorage.setItem('games', JSON.stringify(games))
-  }, [games])
+  function localData(): any {
+    const dataExists = localStorage.getItem('games')
+    return dataExists ? JSON.parse(dataExists) : (jsonData.gamesPlayed)
+  }
 
   return (
     <div className="App">
